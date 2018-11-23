@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>craigiswrong.com</title>
+	</head>
+	<body>
+		<p>What did Craig say?</p>
+		<span id='buttonp'><button onclick='func()'>Craig said:</button></span>
+		<span id='wrong'></span>
+		<span id='butt'></span>
+	</body>
+	<script>
+		function func() {
+			var say = prompt("Craig said ");
+			document.getElementById("buttonp").innerHTML = '<p>Craig said ' + say + '</p>';
+			document.getElementById("wrong").innerHTML = '<p>Craig is wrong.</p>';
+			document.getElementById("butt").innerHTML = '<button onclick="reset()">Ok, thanks.</button>';
+		}
+		function reset() {
+			document.getElementById("buttonp").innerHTML = "<button onclick='func()'>Craig said:</button>";
+			document.getElementById("wrong").innerHTML = '';
+			document.getElementById("butt").innerHTML = '';
+		}
+	</script>
+</html>
