@@ -1,0 +1,201 @@
+<html>
+  <head>
+    <style>
+	  .auto {
+		margin: auto;
+		width: 25%
+	  }
+	    #center {
+	  }
+	  .side {
+		text-align: left;
+		width: 300px;
+		border: 5px solid gray;
+		position: relative;
+		bottom: 10px;
+		float:left
+		top: 21477px;
+		padding: 10px;
+	  }
+	  body {
+		text-align: center;
+		background-color: #4CAF50;
+		color: white;
+		text-decoration: none;
+	  }
+      button {
+      color: white;
+      background-color: #5fb962;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+	  border: 0;
+    }
+      p {
+        font-size: 16px;
+		text-decoration: none;
+    }
+	.b {
+		border: #46a049 inset;
+		}
+    </style>
+  </head>
+  <body>
+	<h1 class='center'>   </h1>
+    <div class='side'>
+		<h3>Information</h3>
+		<p>
+		<strong>By Leili Nelson</strong></br>
+		Hello! You seem to have found Leili Nelson's
+		"distributive property" HTML file. You are 
+		probably wondering how to use it. 
+		</p>
+	</div>
+	<div id="auto">
+	<h1>Distributive Property</h1>
+	<span class = 'center'id='buttons'>
+      (<button onclick='o("first");' id="1o">o</button><button onclick='n("first");' id="1n">n</button>x<button id="2o">o</button><button onclick='n("first")' id="2n">n</button>)(<button id="3o">o</button><button id="3n">n</button>x<button id="4o">o</button><button id="4n">n</button>)<button>=</button>
+    </span>
+    <span class='center' id='answer'><p></br></p></span>
+    <span class='center' id='ctrl'>
+    </span></div>
+  </body>
+  <script>
+    var buttonOne = '<button onclick=\'o("first")\' id="1o">o</button>';
+    var buttonTwo = '<button onclick=\'n("first")\' id="1n">n</button>';
+    var buttonThree = '<button onclick=\'o("secnd")\' id="2o">o</button>';
+    var buttonFour = '<button onclick=\'n("secnd")\' id="2n">n</button>';
+    var buttonFive = '<button onclick=\'o("third")\' id="3o">o</button>';
+    var buttonSix = '<button onclick=\'n("third")\' id="3n">n</button>';
+    var buttonSeven = '<button onclick=\'o("forth")\' id="4o">o</button>';
+    var buttonEight = '<button onclick=\'n("forth")\' id="4n">n</button>';
+    var buttonNine = '<button onclick="compile();">=</button></p>';
+    var butts = '<p><button>(</button>' + buttonOne + buttonTwo + '<button>x</button>' + buttonThree + buttonFour + '<button>)(</button>' + buttonFive + buttonSix + '<button>x</button>' + buttonSeven + buttonEight + '<button>)</button>' + buttonNine;
+    document.getElementById("buttons").innerHTML = butts;
+    var oh = '<button class="b" onclick="operation(\'+\')">+</button><button class="b" onclick="operation(\'-\')">-</button>';
+    var chooseO = '';
+    var chooseN = '';
+    var nOne = '<button class="b" onclick="keypad(1)">1</button><button class="b" onclick="keypad(2)">2</button><button class="b" onclick="keypad(3)">3</button></br>';
+    var nTwo = '<button class="b" onclick="keypad(4)">4</button><button class="b" onclick="keypad(5)">5</button><button class="b" onclick="keypad(6)">6</button></br>'
+    var nThree = '<button class="b" onclick="keypad(7)">7</button><button class="b" onclick="keypad(8)">8</button><button class="b" onclick="keypad(9)">9</button>';
+    var nTotal = nOne + nTwo + nThree;
+    var firstN;
+    var secndN;
+    var thirdN;
+    var forthN;
+    var firstO;
+    var secndO;
+    var thirdO;
+    var forthO;
+    function o(one) {
+      document.getElementById('ctrl').innerHTML = oh;
+      chooseO = one;
+    }
+    function n(one) {
+      document.getElementById('ctrl').innerHTML = nTotal;
+      chooseN = one;
+    }
+    function operation(op) {
+      if (chooseO === "first") {
+        if (op !== "+") {
+          document.getElementById('1o').innerHTML = op;
+        } else {
+          document.getElementById('1o').innerHTML = op;
+		}
+        firstO = op;
+      } else if (chooseO === 'secnd') {
+        document.getElementById('2o').innerHTML = op;
+        secndO = op;
+      } else if (chooseO === 'third') {
+        if (op !== "+") {
+          document.getElementById('3o').innerHTML = op;
+        } else {
+          document.getElementById('3o').innerHTML = op
+        }
+        thirdO = op;
+      } else if (chooseO === 'forth') {
+        document.getElementById('4o').innerHTML = op;
+        forthO = op;
+      }
+    }
+    function keypad(number) {
+      if (chooseN === "first") {
+        if (number != 1) {
+          document.getElementById('1n').innerHTML = number;
+        } else {
+          document.getElementById('1n').innerHTML = number;
+        }
+        firstN = number;
+      } else if (chooseN === 'secnd') {
+        document.getElementById('2n').innerHTML = number;
+        secndN = number;
+      } else if (chooseN === 'third') {
+        if (number != 1) {
+          document.getElementById('3n').innerHTML = number;
+        } else {
+          document.getElementById('3n').innerHTML = number;
+        }
+        thirdN = number;
+      } else if (chooseN === 'forth') {
+        document.getElementById('4n').innerHTML = number;
+        forthN = number;
+      }
+    }
+    function compile () {
+      var oA = [firstO, secndO, thirdO, forthO];
+	  console.log(oA);
+      var nA = [firstN, secndN, thirdN, forthN];
+	  console.log(nA);
+      var nums = ['', '', '', ''];
+      for (var k = 0; k < 4; k++) {
+        if (oA[k] !== '+') {
+          nums[k] = 0-nA[k];
+        } else if (oA[k] === '+') {
+          nums[k] = nA[k];
+        }
+      }
+	  console.log(nums);
+      var eO = [nums[0]*nums[2], nums[0]*nums[3], nums[1]*nums[2], nums[1]*nums[3]];
+	  console.log(eO);
+      var eF = [eO[0], eO[1]+eO[2], eO[3]];
+	  console.log(eF);
+      var eIndex = [];
+      for (var j = 0; j < 3; j++) {
+        if (eF[j]<0) {
+          eIndex[j] = 'minus';
+		  console.log('minus');
+        } else if (eF[j] == 0) {
+          eIndex[j] = 'none';
+		  console.log('none');
+        } else if (eF[j] > 0) {
+          eIndex[j] = 'plus';
+		  console.log('plus');
+        }
+      }
+	  if (eF[0] == 1) {
+		var a = ['x<sup>2</sup>'];
+	  } else if (eF[0] == -1) {
+		var a = ['-x<sup>2</sup>'];
+	  } else {
+		var a = [eF[0], 'x<sup>2</sup>'];
+	  }
+      if (eIndex[1] == 'none') {
+      } else if (eIndex[1] == 'plus') {
+        a.push(' + ' + eF[1] + 'x');
+      } else {
+        a.push(' - ' + Math.abs(parseFloat(eF[1])) + 'x');
+      }
+	  eIndex[2] == 'plus' ? a.push(' + ' + eF[2]) : a.push(' - ' + Math.abs(parseFloat(eF[2])));
+      /*if (eIndex[2] == 'plus') {
+        a.push(' + ' + eF[2]);
+      } else {
+        a.push(' - ' + Math.abs(parseFloat(eF[2])));
+      }*/
+      var str = '';
+      for (var i = 0; i < a.length; i++) {
+        str = str + a[i];
+      }
+      document.getElementById('answer').innerHTML = '<p>' + str + '</p>';
+    }
+  </script >
+</html >
