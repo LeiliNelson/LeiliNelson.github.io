@@ -1,11 +1,79 @@
 <html>
 	<head>
+		<link rel="icon" href="ant.png">
+		<title>Ant Nation HQ</title>
+		<style>
+			.user {
+				color: #595959;
+			}
+			#block {
+				width: 500;
+			}
+			button {
+				border: inset;
+			}
+		</style>
 	</head>
 	<body>
-		<h2>This is currently a work in progress! Please check back later for updates.</br>
+		<img src='ant.png' width='400px' height='400px'/>
+		<h2>This is currently a work in progress! Please check back later for updates.<br />
 		So ert bah pekalo. :)</h2>
-		<img src='ant.png'>
+		<p>If you are lonely or bored with waiting for Ant Nation HQ to be finished,<br />
+		try talking with our bot! Our bot is also a work in progress.<br />
+		<button onclick='talk();'>Conversation Bot</button></p>
+		<div id='block'><span id='talking'></span></div>
 	</body>
 	<script>
+		//add the name function, change con into an array so that I can change certain parts or add something with an array to record what parts I need to delete and replace
+		var name;
+		var rewrite;
+		var itWas;
+		function r () {
+			return Math.floor(Math.random() * 4); 
+		}
+		function nameF () {
+			name = prompt('My name is:');
+			change("<span class='user'> My name is " + name + ".</span><br />");
+			update();
+			setTimeout(nameT, 1000);
+		}
+		function nameT () {
+			add('Hello ' + name + '! My official name is Conversation Bot, but you can call me Leilian if that is hard to say because my creator is one of the Leilians, a race of broccoli that rides around on broccoli unicorns. How is your day going today? </br>');
+			add('<button onclick="good()">Good</button>  <button onclick="bad()">Bad</button>');
+			update();
+		}
+		function good () {
+			change('<span class="user">Good.<br /></span>');
+			update();
+			setTimeout(function(){console.log("oh hey");}, 500);
+			add('That is good. What was your favorite thing that happened today?<br />');
+			add('<button onclick="goodT()">It was when:</button>');
+			update();
+		}
+		function goodT () {
+			itWas = prompt('What was your favorite thing that happened today?');
+			change('<span class="user">' + itWas + '<span>');
+			update();
+		}
+		function bad () {
+			change('<span class="user">Bad.</span>');
+			update();
+			setTimeout(function(){console.log("oh hey");}, 500);
+			add('Aww, that sucks. Why is your day going badly?');
+			add('<button>Because:</button>');
+		}
+		function talk () {
+			con = ['<p>Hello! What is your name?<br />', '<button onclick="nameF();">My name is:</button>'];
+			rewrite = 1;
+			update();
+		}
+		function add (what) {
+			con.push(what);
+			rewrite++;
+		}
+		function change (what) {
+			con[rewrite] = what;
+		}
+		const update = () => document.getElementById('talking').innerHTML = con.join('') + '</p>';
 	</script>
-</html>
+</html>>
