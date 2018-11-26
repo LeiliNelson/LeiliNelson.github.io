@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<link rel="icon" href="ant.png">
-		<title>Ant Nation HQ</title>
+		<title>Conversation Bot</title>
 		<style>
 			.user {
 				color: #595959;
@@ -15,11 +15,8 @@
 		</style>
 	</head>
 	<body>
-		<img src='ant.png' width='400px' height='400px'/>
-		<h2>This is currently a work in progress! Please check back later for updates.<br />
-		So ert bah pekalo. :)</h2>
-		<p>If you are lonely or bored with waiting for Ant Nation HQ to be finished,<br />
-		try talking with our bot! Our bot is also a work in progress.<br />
+		<p>If you are lonely or bored, try talking with our bot! It is a work <br />
+		in progress, so it isn't very long yet.<br />
 		<button onclick='talk();'>Conversation Bot</button></p>
 		<div id='block'><span id='talking'></span></div>
 	</body>
@@ -38,7 +35,7 @@
 			setTimeout(nameT, 1000);
 		}
 		function nameT () {
-			add('Hello ' + name + '! My official name is Conversation Bot, but you can call me Leilian if that is hard to say because my creator is one of the Leilians, a race of broccoli that rides around on broccoli unicorns. How is your day going today? </br>');
+			add('Hello ' + name + '! My official name is Conversation Bot, but you can call me Leilian if that is hard to say because my creator is one of the Leilians, a race of broccoli that rides around on broccoli unicorns. Don\'t ask where that came from. How is your day going today? </br>');
 			add('<button onclick="good()">Good</button>  <button onclick="bad()">Bad</button>');
 			update();
 		}
