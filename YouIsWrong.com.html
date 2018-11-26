@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<link rel='icon' href='icon2.png'>
+		<title>youiswrong.com</title>
+	</head>
+	<body>
+		<span id='nameo'><p>What is this person's name?</p></span>
+		<span id='buttonp'><button onclick='n()'>Their name is:</button></span>
+		<span id='wrong'></span>
+		<span id='button'></span>
+	</body>
+	<script>
+    	var name;
+        function n () {
+			name = prompt("Their name is:");
+            reset();
+		}
+		function func () {
+			var say = prompt(name + " said ");
+			document.getElementById("buttonp").innerHTML = '<p>' + name +' said ' + say + '</p>';
+			document.getElementById("wrong").innerHTML = '<p>' + name + ' is wrong.</p>';
+			document.getElementById("button").innerHTML = '<button onclick="reset()">Ok, thanks.</button>';
+		}
+		function reset () {
+        	document.getElementById('nameo').innerHTML = '<p>What did ' + name + ' say?</p>'
+			document.getElementById("buttonp").innerHTML = "<button onclick='func()'>" + name + " said:</button>";
+			document.getElementById("wrong").innerHTML = ' ';
+			document.getElementById("button").innerHTML = ' ';
+		}
+	</script>
+</html>
