@@ -21,7 +21,6 @@
 		<div id='block'><span id='talking'></span></div>
 	</body>
 	<script>
-		//add the name function, change con into an array so that I can change certain parts or add something with an array to record what parts I need to delete and replace
 		var name;
 		var rewrite;
 		var itWas;
@@ -53,11 +52,20 @@
 			update();
 		}
 		function bad () {
-			change('<span class="user">Bad.</span>');
+			change('<span class="user">Bad.</span><br />');
 			update();
 			setTimeout(function(){console.log("oh hey");}, 500);
-			add('Aww, that sucks. Why is your day going badly?');
-			add('<button>Because:</button>');
+			add('Aww, that sucks. Why is your day going badly?<br />');
+			add('<button onclick="badT()">Because:</button><br />');
+			update();
+		}
+		function badT () {
+			itWas = prompt('Why is your day going badly?');
+			change('<span class="user">' + itWas + '</span><br />');
+			update();
+			setTimeout(function(){console.log('Hi');}, 500);
+			add("That is sad. It really does suck when that happens. It happened to me once.<br />");
+			update();
 		}
 		function talk () {
 			con = ['<p>Hello! What is your name?<br />', '<button onclick="nameF();">My name is:</button>'];
