@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Combinations</title>
+</head>
+<body>
+<button onclick = "alertf()">Button :)</button>
+</body>
+<script>
+function alertf () {
+	var ff = prompt("What do you want to see the combinations of?");
+	alert(ff + " can be arranged " + combinations(ff) + " different ways!");
+}
+function factorial (num) {
+    if (num === 0) {
+        return 1;
+    } else if (num < 0 || Math.floor(num) != num) {
+        console.log("The provided number was either a decimal or negative number.");
+    } else {
+        return (num * factorial(num - 1));
+    }
+}
+function combinations (str) {
+    var repeat = [];
+    var done = [];
+    var n;
+    for (var i = 0; i < str.length; i++) {
+        if (done.indexOf(str[i]) == -1) {
+            done.push(str[i]);
+            repeat.push(1);
+        } else {
+            repeat[done.indexOf(str[i])]++; 
+        }
+    }
+    n = factorial(str.length);
+    for (var k = 0; k < repeat.length; k++) {
+        n = n / factorial(repeat[k]);
+    }
+    return n;
+}
+</script>
+</html>

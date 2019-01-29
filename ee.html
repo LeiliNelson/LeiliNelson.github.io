@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title>Quadratic Equation Generator</title>
+</head>
+<body>
+	<button onclick = 'generate();'>Click to generate</button><button onclick = 'show();'>Show answer</button>
+	<span id = 'equation'></span>
+	<span id = 'answer'></span>
+</body>
+<script>
+function say (what) {
+	console.log(what);
+}
+var operations;
+var numbers;
+var unsimplified;
+var eF;
+var str;
+function generate () {
+
+	operations = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
+	numbers = [1, Math.floor(Math.random() * 10), 1, Math.floor(Math.random() * 10)];
+
+	for (var k = 0; k < operations.length; k++) {
+		if (operations[k] === 0) {
+			operations[k] = -1;
+		} else if (operations[k] === 1) {
+			
+		} else {
+			say("ERROR 000: operations[" + k + "] isn't 0 or 1. It is " + operations[k] + ".");
+		}
+	}
+
+	for (var i = 0; i < numbers.length; i++) {
+		numbers[i] = numbers[i] * operations[i];
+		if (isNaN(numbers[i])) {
+			say("ERROR 001: numbers[" + i + "] isn't a number.");
+		}
+	}
+
+	unsimplified = [numbers[0]*numbers[2], numbers[0]*numbers[3], numbers[1]*numbers[2], numbers[1]*numbers[3]];
+	eF = [unsimplified[0], unsimplified[1]+unsimplified[2], unsimplified[3]];
+
+	switch(eF[0]) {
+	case 1:
+		str =  'x<sup>2</sup>';
+		break;
+	case -1:
+		str = '-x<sup>2</sup>';
+		break;
+	default:
+		str = eF[0] + 'x<sup>2</sup>';
+	}
+	if (eF[1] < 0) {
+		str = str + ' - ' + Math.abs(eF[1]) + 'x';
+	} else if (eF[1] > 0) {
+		str = str + ' + ' + eF[1] + 'x';
+	}
+	if (eF[2] < 0) {
+		str = str + ' - ' + Math.abs(eF[2]);
+	} else if (eF[2] > 0) {
+		str = str + ' + ' + eF[2];
+	}
+
+	document.getElementById("equation").innerHTML = str;
+}
+function show () {
+	document.getElementById("answer").innerHTML = "<br />x = " + (-1*numbers[1]) + ' or ' + (-1*numbers[3]);
+}
+</script>
+</html>
