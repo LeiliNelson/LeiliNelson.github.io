@@ -18,7 +18,11 @@
 		function func () {
 			var say = prompt(name + " said ");
 			document.getElementById("buttonp").innerHTML = '<p>' + name +' said ' + say + '</p>';
-			document.getElementById("wrong").innerHTML = '<p>' + name + ' is wrong.</p>';
+			if (name === "Leili" || name === "leili") {
+				document.getElementById("wrong").innerHTML = '<p>' + name + ' is right.</p>';
+			} else {
+				document.getElementById("wrong").innerHTML = '<p>' + name + ' is wrong.</p>';
+			}
 			document.getElementById("button").innerHTML = '<button onclick="reset()">Ok, thanks.</button>';
 		}
 		function reset () {
